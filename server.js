@@ -1,13 +1,13 @@
-// server.js
-import app from '@suen/music-api/src/express-app';
+// server.js - 专门给 Vercel 用的入口文件
+const app = require('./dist/express-app.js');
 
-// 导出 app，让 Vercel 能识别
-export default app;
+// 导出 app 给 Vercel 使用
+module.exports = app;
 
-// 本地开发时启动服务器
+// 本地测试用
 if (require.main === module) {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`聚合音乐 API 服务已启动: http://localhost:${port}`);
+    console.log(`✅ 聚合音乐 API 已启动: http://localhost:${port}`);
   });
 }
